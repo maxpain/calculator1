@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CalcFrame extends JFrame {
+public class Main extends JFrame {
 
     JTextArea display= new JTextArea();//дисплей калькулятора
 
@@ -12,7 +12,7 @@ public class CalcFrame extends JFrame {
     int firstValue = 0;
     String operation = "+";
 
-    private CalcFrame() {
+    private Main() {
 
         JPanel buttonPanel = new JPanel(new GridLayout(3,5));//панель с кнопками
         JButton button0 = new JButton("0");//кнопка 0
@@ -199,7 +199,7 @@ public class CalcFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        new CalcFrame();
+        new Main();
     }
 
 }
