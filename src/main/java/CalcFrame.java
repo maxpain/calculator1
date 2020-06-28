@@ -7,6 +7,8 @@ public class CalcFrame extends JFrame {
 
     JTextArea display= new JTextArea();//дисплей калькулятора
 
+    //for test commit kek
+
     int firstValue = 0;
     String operation = "+";
 
