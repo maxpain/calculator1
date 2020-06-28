@@ -120,77 +120,86 @@ public class CalcFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String temp = display.getText();
-                display.setText(temp.substring(0,temp.length()-1));
+                if(!temp.isEmpty()) {
+                    display.setText(temp.substring(0, temp.length() - 1));
+                }
             }
         });
 
         buttonSum.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                firstValue = Integer.valueOf(display.getText());
-                display.setText("");
+                if(!display.getText().isEmpty()) {
+                    firstValue = Integer.valueOf(display.getText());
+                    display.setText("");
+                }
                 operation = "+";
             }
         });
         buttonMul.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                firstValue = Integer.valueOf(display.getText());
-                display.setText("");
+                if(!display.getText().isEmpty()) {
+                    firstValue = Integer.valueOf(display.getText());
+                    display.setText("");
+                }
                 operation = "*";
             }
         });
         buttonDivide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                firstValue = Integer.valueOf(display.getText());
-                display.setText("");
+                if(!display.getText().isEmpty()) {
+                    firstValue = Integer.valueOf(display.getText());
+                    display.setText("");
+                }
                 operation = "/";
             }
         });
         buttonSub.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                firstValue = Integer.valueOf(display.getText());
-                display.setText("");
-                operation = "-";
+                if(!display.getText().isEmpty()) {
+                    firstValue = Integer.valueOf(display.getText());
+                    display.setText("");
+                }
+                    operation = "-";
             }
         });
         buttonStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int secondValue = Integer.valueOf(display.getText());
-                if("+".equals(operation)){
-                    display.setText((firstValue+secondValue)+"");
-                }
-                if("-".equals(operation)){
-                    display.setText((firstValue-secondValue)+"");
-                }
-                if("*".equals(operation)){
-                    display.setText((firstValue*secondValue)+"");
-                }
-                if("/".equals(operation)){
-                    if(secondValue != 0) {
-                        display.setText((firstValue / secondValue) + "");
-                    }else{
-                        JOptionPane.showMessageDialog(null,
-                                "ALERT MESSAGE",
-                                "TITLE",
-                                JOptionPane.WARNING_MESSAGE);
+                if(!display.getText().isEmpty()) {
+                    int secondValue = Integer.valueOf(display.getText());
+                    if ("+".equals(operation)) {
+                        display.setText((firstValue + secondValue) + "");
                     }
+                    if ("-".equals(operation)) {
+                        display.setText((firstValue - secondValue) + "");
+                    }
+                    if ("*".equals(operation)) {
+                        display.setText((firstValue * secondValue) + "");
+                    }
+                    if ("/".equals(operation)) {
+                        if (secondValue != 0) {
+                            display.setText((firstValue / secondValue) + "");
+                        } else {
+                            JOptionPane.showMessageDialog(null,
+                                    "Деление на ноль",
+                                    "Ошибка",
+                                    JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                    firstValue = 0;
+                    operation = "+";
                 }
-                firstValue = 0;
-                operation = "+";
             }
         });
 
     }
 
-
-
     public static void main(String[] args) {
         new CalcFrame();
     }
-
 
 }
